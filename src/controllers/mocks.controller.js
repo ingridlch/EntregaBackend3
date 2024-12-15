@@ -4,8 +4,9 @@ import {generateUser, generatePet} from "../utils/index.js";
 
 
 const createPets = async(req,res)=> {
-    let lpets = []
-    for(let i=0; i<100; i++){
+    let lpets = [];
+    const cant = ((req.query.cant) && parseInt(req.query.cant)>0) ? parseInt(req.query.cant) : 100;
+    for(let i=0; i<cant; i++){
         const petDTO = PetDTO.getPetInputFrom(generatePet());
         lpets.push(petDTO);
     }
@@ -13,8 +14,9 @@ const createPets = async(req,res)=> {
 }
 
 const createUsers = async(req,res)=>{
-    let lusers = []
-    for(let i=0; i<50; i++){
+    let lusers = [];
+    const cant = ((req.query.cant) && parseInt(req.query.cant)>0) ? parseInt(req.query.cant) : 50;
+    for(let i=0; i<cant; i++){
         const user = await generateUser();
         lusers.push(user);
     }

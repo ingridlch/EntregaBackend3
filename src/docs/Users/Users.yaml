@@ -1,0 +1,95 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string
+          description: Apellido del usuario
+        email:
+          type: string
+          description: Email del usuario
+        password:
+          type: string
+          description: Clave del usuario
+        role:
+          type: string
+          description: Rol del usuario ("user" o "admin")
+        pets:
+          type: array
+          description: Arreglo con los ids de mascotas adoptadas
+
+paths:
+  /api/users/:
+    get:
+      summary: Obtiene las lista de usuarios
+      tags: [Users]
+      responses:
+        200:
+          description: Lista de usuarios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+
+  /api/users/{id}:
+    get:
+      summary: Obtiene un usuario por ID
+      tags: [Users]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID del usuario
+      responses:
+        200:
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        404:
+          description: Usuario no encontrado
+    put:
+      summary: "Actualiza un usuario existente"
+      tags: [Users]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID del usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        200:
+          description: Usuarios actualizado
+        404:
+          description: Usuario no encontrado
+    delete:
+      summary: Elimina un usuario por ID
+      tags: [Users]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID del usuario
+      responses:
+        200:
+          description: Usuario eliminado
+        404:
+          description: Usuario no encontrado
