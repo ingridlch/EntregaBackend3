@@ -2,7 +2,7 @@
 
 ### Descripción del proyecto:
 
-Se tomó como base el proyecto de un servidor basado en Node.JS y express, con persistencia en una base de datos Mongo. Se creó un módulo de Mocking con el fin de generar mascotas y usuarios. Se incorpora Faker-js. Se documentó con Swagger el módulo “Users”. Se desarrollaron los tests funcionales para todos los endpoints del router “adoption.router.js”. Se generó una imagen Docker del proyecto.
+Se tomó como base el proyecto brindado en el curso, con un servidor basado en Node.JS y express, con persistencia en una base de datos Mongo. Se creó un módulo de Mocking con el fin de generar mascotas y usuarios. Se incorpora Faker-js. Se documentó con Swagger el módulo “Users”. Se desarrollaron los tests funcionales para todos los endpoints del router “adoption.router.js”. Se generó una imagen Docker del proyecto.
 
 ### Pasos para probar el proyecto:
 
