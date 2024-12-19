@@ -57,5 +57,5 @@ Se incluyen capturas de pruebas realizadas en Postman que demuestran su funciona
 
 ### Documentación con Swagger del módulo “Users”
 
-Se incluyen captura de la vista generada:
+Se incluye captura de la vista generada:
 ![swagger](./src/public/img/swagger.jpg)
