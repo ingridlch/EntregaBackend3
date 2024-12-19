@@ -7,13 +7,17 @@ const getAllAdoptions = async(req,res)=>{
 
 const getAdoption = async(req,res)=>{
     const adoptionId = req.params.aid;
+    const val = /^[0-9a-fA-F]{24}$/;
+    if(!adoptionId.match(val)) return res.status(404).send({status:"error",error:"Not valid id"});
     const adoption = await adoptionsService.getBy({_id:adoptionId})
     if(!adoption) return res.status(404).send({status:"error",error:"Adoption not found"})
     res.send({status:"success",payload:adoption})
 }
 
 const createAdoption = async(req,res)=>{
-    const {uid,pid} = req.params;
+    const {uid,pid} = req.params;console.log(uid,pid)
+    const val = /^[0-9a-fA-F]{24}$/;
+    if(!uid||!pid||!uid.match(val)||!pid.match(val)) return res.status(404).send({status:"error",error:"Not valid ids"});
     const user = await usersService.getUserById(uid);
     if(!user) return res.status(404).send({status:"error", error:"user Not found"});
     const pet = await petsService.getBy({_id:pid});

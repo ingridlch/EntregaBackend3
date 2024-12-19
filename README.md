@@ -2,7 +2,7 @@
 
 ### Descripción del proyecto:
 
-Se tomó como base el proyecto de un servidor basado en Node.JS y express, con persistencia en una base de datos Mongo. Se creó un módulo de Mocking con el fin de generar mascotas y usuarios. Se incorpora Faker-js. Se documentó con Swagger el módulo de “Users”. Se desarrollaron los tests funcionales para todos los endpoints del router “adoption.router.js”.
+Se tomó como base el proyecto de un servidor basado en Node.JS y express, con persistencia en una base de datos Mongo. Se creó un módulo de Mocking con el fin de generar mascotas y usuarios. Se incorpora Faker-js. Se documentó con Swagger el módulo “Users”. Se desarrollaron los tests funcionales para todos los endpoints del router “adoption.router.js”. Se generó una imagen Docker del proyecto.
 
 ### Pasos para probar el proyecto:
 
@@ -19,6 +19,10 @@ npm install
 ```
 
 - Configurar las variables de entorno en el archivo .env ubicado en la raíz del proyecto. En env.example se listan cuales se deben configurar.
+
+### Imagen Docker del proyecto
+
+https://hub.docker.com/repositories/ingridlochi/adoptme
 
 ### Endpoints de la API
 
@@ -50,3 +54,8 @@ Se incluyen capturas de pruebas realizadas en Postman que demuestran su funciona
 
 ![mongousers](./src/public/img/mongousers.jpg)
 ![mongopets](./src/public/img/mongopets.jpg)
+
+### Documentación con Swagger del módulo “Users”
+
+Se incluyen captura de la vista generada:
+![swagger](./src/public/img/swagger.jpg)

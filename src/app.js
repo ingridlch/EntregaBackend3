@@ -40,9 +40,9 @@ const swaggerOptions = {
             }
         ],
     },
-    apis: [`${__dirname}/docs/**/*.yaml`] // Ruta de los archivos con documentación 
+    apis: [`${__dirname}/../docs/**/*.yaml`] // Ruta de los archivos con documentación 
 }
-
+console.log(`${__dirname}/../docs/**/*.yaml`)
 const swaggerDocs = swaggerJSDoc(swaggerOptions)
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 

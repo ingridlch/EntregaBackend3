@@ -8,7 +8,7 @@ const requester = supertest("http://localhost:8080")
 
 describe("Test Adoptions", () => {
     describe("Test para todos los endpoints de adoption.router.js",()=>{
-        it("El endpoint get api/adoptions devuelve un array de adopciones", async()=>{
+        it("El endpoint get api/adoptions devuelve un array de adopciones válido", async()=>{
             const {
                 statusCode,
                 _body
@@ -32,6 +32,14 @@ describe("Test Adoptions", () => {
             expect(_body.payload).to.have.property('owner').that.is.a('string');
             expect(_body.payload).to.have.property('pet').that.is.a('string');
         }),
+        it("El endpoint get api/adoptions/:aid devuelve error si el parametro no es válido", async()=>{
+            const aid = null;
+            const {
+                statusCode,
+                _body
+            } = await requester.get("/api/adoptions/"+aid).send()
+            expect(statusCode).that.equals(404);
+        }),
         it("El endpoint post api/adoptions/:uid/:pid permite que el usuario :uid adopte la moscota :pid", async()=>{
             const uid = "673975af17169af3665ce597";
             const pid = "67396c316cfb39b5cfd7f063";
@@ -40,6 +48,25 @@ describe("Test Adoptions", () => {
                 message
             } = await requester.post("/api/adoptions/"+uid+"/"+pid).send()
             expect(statusCode).to.be.ok;
+        }),    
+        it("El endpoint post api/adoptions/:uid/:pid devuelve error si algún parametro es vacío", async()=>{
+            const uid = "";
+            const pid = "67396c316cfb39b5cfd7f063";
+            const {
+                statusCode,
+                message
+            } = await requester.post("/api/adoptions/"+uid+"/"+pid).send()
+            expect(statusCode).that.equals(404);
+        })
+             
+        it("El endpoint post api/adoptions/:uid/:pid devuelve error si algún parametro no es válido", async()=>{
+            const uid = "lala";
+            const pid = "67396c316cfb39b5cfd7f063";
+            const {
+                statusCode,
+                message
+            } = await requester.post("/api/adoptions/"+uid+"/"+pid).send()
+            expect(statusCode).that.equals(404);
         })
     })
 }),
