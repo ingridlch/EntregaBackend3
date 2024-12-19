@@ -22,7 +22,7 @@ npm install
 
 ### Imagen Docker del proyecto
 
-https://hub.docker.com/repositories/ingridlochi/adoptme
+https://hub.docker.com/r/ingridlochi/adoptme
 
 ### Endpoints de la API
 
